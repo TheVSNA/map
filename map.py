@@ -107,7 +107,7 @@ my_label.pack(pady = 20)
 my_label.grid_rowconfigure(100, weight=1)
 my_label.grid_columnconfigure(2, weight=1)
 map_widget = tkintermapview.TkinterMapView(my_label,width=800,height=600)
-#map_widget.grid(row=0,column=0)
+
 map_widget.set_tile_server("https://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z}&s=Ga", max_zoom=18)
 map_widget.set_position(41.5,12.28)
 map_widget.set_zoom(1)
@@ -115,15 +115,9 @@ map_widget.pack(side="left",expand=False)#side="left", fill="both", expand=True
 
 
 w = Label(root,text="Green: country visited\nRed: country to visit\nBlue: place to visit\nYellow: place visited\n").place(x=1150, y=5)
-#w.pack(padx=5,pady=-200,side=RIGHT)#side="right", fill="both", expand=False
-#w.grid(row=1,column=1)
 
 add_marker_from_db(map_widget)  
 
 map_widget.add_right_click_menu_command(label="Add Marker",command=add_marker_event,pass_coords=True)
 map_widget.add_right_click_menu_command(label="Remove Marker",command=remove_marker_event,pass_coords=True)
 root.mainloop()
-
-
-## todo: 
-# aggiungere legenda colori: rosso stati da visitare, verde stati visitati, blu, luoghi da visitare, giallo (?) luoghi visitati
